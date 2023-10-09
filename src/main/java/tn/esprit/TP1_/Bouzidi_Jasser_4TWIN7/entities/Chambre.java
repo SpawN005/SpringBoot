@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -19,5 +20,11 @@ public class Chambre implements Serializable {
     private Long numeroChambre;
     @Enumerated(EnumType.STRING)
     private TypeChambre typeChambre;
+    @ManyToOne
+    Bloc bloc;
+
+    @OneToMany
+    private Set<Reservation> reservation;
+
 
 }

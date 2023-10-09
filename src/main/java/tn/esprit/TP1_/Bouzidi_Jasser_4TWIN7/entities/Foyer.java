@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -15,6 +17,9 @@ public class Foyer implements Serializable {
     @Column(name="idFoyer")
     private Long idFoyer;
     private String nomFoyer;
-
+    @OneToOne
+    private Universite universite;
     private Long capaciteFoyer;
+    @OneToMany(mappedBy = "foyer")
+    private Set<Bloc> blocs;
 }

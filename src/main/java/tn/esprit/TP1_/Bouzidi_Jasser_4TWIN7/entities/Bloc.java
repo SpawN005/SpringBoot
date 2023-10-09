@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -17,4 +19,8 @@ public class Bloc implements Serializable {
     private String nomBloc;
 
     private Long capaciteBloc;
+    @ManyToOne
+    private Foyer foyer;
+    @OneToMany(mappedBy = "bloc")
+    private Set<Chambre> chambres;
 }
