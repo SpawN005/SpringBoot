@@ -2896,3 +2896,6 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'springdb.reservation_etudian
 2023-11-05T17:07:35.906+01:00  WARN 2408 --- [http-nio-8082-exec-3] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.controller.UniversiteRestController
 2023-11-05T17:07:35.965+01:00  INFO 2408 --- [http-nio-8082-exec-3] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 123 ms
 2023-11-05T17:07:39.001+01:00  INFO 2408 --- [http-nio-8082-exec-5] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 255 ms
+2023-11-05T17:43:50.079+01:00  INFO 2408 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-11-05T17:43:50.259+01:00  INFO 2408 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-11-05T17:43:50.262+01:00  INFO 2408 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

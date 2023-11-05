@@ -1,8 +1,11 @@
 package tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.services;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities.Foyer;
 import tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities.Universite;
+import tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.repositories.IFoyerRepositry;
 import tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.repositories.IUniversiteRepositry;
 
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UniversiteServiceImpl implements IUniversiteService{
     IUniversiteRepositry universiteRepositry;
+    IFoyerRepositry foyerRepositry;
     @Override
     public Universite ajouterUniversite(Universite U) {
         return universiteRepositry.save(U);
@@ -34,5 +38,33 @@ public class UniversiteServiceImpl implements IUniversiteService{
     @Override
     public List<Universite> getListUniversite() {
         return (List<Universite>) universiteRepositry.findAll();
+    }
+
+
+
+    @Override
+    @Transactional
+    public Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite) {
+        Foyer f = foyerRepositry.findById(idFoyer).orElse(null);
+        Universite u = universiteRepositry.findByNomUniversite(nomUniversite);
+        if(f!=null && u!=null){
+            u.setFoyer(f);
+            return u;
+
+        }
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public Universite desaffecterFoyerAUniversite(long idFoyer, long idUniversite) {
+        Foyer f = foyerRepositry.findById(idFoyer).orElse(null);
+        Universite u = universiteRepositry.findById(idUniversite).orElse(null);
+        if(f!=null && u!=null){
+            u.setFoyer(null);
+            return u;
+
+        }
+        return null;
     }
 }
