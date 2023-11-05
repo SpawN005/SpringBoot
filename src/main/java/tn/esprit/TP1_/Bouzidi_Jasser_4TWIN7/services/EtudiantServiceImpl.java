@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class EtudiantServiceImpl implements IEtudiantService {
-    IEtudiantRepositry etudiantRepositry;
+    private  final IEtudiantRepositry etudiantRepositry;
     @Override
     public Etudiant ajouterEtudiant(Etudiant E) {
         return etudiantRepositry.save(E);
