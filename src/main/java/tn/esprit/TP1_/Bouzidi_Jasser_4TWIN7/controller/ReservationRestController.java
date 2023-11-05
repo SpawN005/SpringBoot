@@ -1,5 +1,7 @@
 package tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities.Reservation;
@@ -11,18 +13,22 @@ import java.util.List;
 
 @RestController
 @RequestMapping("reservations")
+@Tag(name = "reservation management")
 @RequiredArgsConstructor
 public class ReservationRestController {
     private final IReservationService reservationService;
     @GetMapping("allreservations")
+    @Operation(description = "retrieve all reservations")
     public List<Reservation> retrieveAllReservation(){return reservationService.getListReservation();}
 
     @DeleteMapping("reservation/{id}")
+    @Operation(description = "delete reservation")
     public Reservation retrieveReservation(@PathVariable long id){
 
        return reservationService.getReservation(id);}
 
     @PutMapping("updatereservation/{id}")
+    @Operation(description = "update reservation")
     public Reservation updateReservation(@RequestBody Reservation b)
     {
         return reservationService.updateReservation(b);

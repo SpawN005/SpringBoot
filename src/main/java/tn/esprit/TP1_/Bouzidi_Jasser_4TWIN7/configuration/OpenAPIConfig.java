@@ -40,6 +40,51 @@ public class OpenAPIConfig {
 
     }
     @Bean
+    public GroupedOpenApi blocPublicApi() {
+        return GroupedOpenApi.builder()
+
+                .group("Only Bloc Management API").pathsToMatch("/blocs/**")
+                .pathsToExclude("**")
+                .build();
+
+    }
+    @Bean
+    public GroupedOpenApi chambrePublicApi() {
+        return GroupedOpenApi.builder()
+
+                .group("Only Chambre Management API").pathsToMatch("/chambres/**")
+                .pathsToExclude("**")
+                .build();
+
+    }
+    @Bean
+    public GroupedOpenApi etudiantPublicApi() {
+        return GroupedOpenApi.builder()
+
+                .group("Only Etudiant Management API").pathsToMatch("/etudiants/**")
+                .pathsToExclude("**")
+                .build();
+
+    }
+    @Bean
+    public GroupedOpenApi reservationPublicApi() {
+        return GroupedOpenApi.builder()
+
+                .group("Only Reservation Management API").pathsToMatch("/reservations/**")
+                .pathsToExclude("**")
+                .build();
+
+    }
+    @Bean
+    public GroupedOpenApi universitePublicApi() {
+        return GroupedOpenApi.builder()
+
+                .group("Only Universite Management API").pathsToMatch("/universities/**")
+                .pathsToExclude("**")
+                .build();
+
+    }
+    @Bean
     public GroupedOpenApi PublicApi() {
         return GroupedOpenApi.builder()
 

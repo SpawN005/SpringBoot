@@ -1,5 +1,7 @@
 package tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities.Chambre;
@@ -11,19 +13,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("universities")
+@Tag(name = "universite management")
 @RequiredArgsConstructor
 public class UniversiteRestController {
     private final IUniversiteService universiteService;
     @GetMapping("alluniversities")
+    @Operation(description = "retrieve all universities")
     public List<Universite> retrieveAllUniversities(){return universiteService.getListUniversite();}
     @PostMapping("adduniversity")
+    @Operation(description = "add university")
     public Universite addUniversite(@RequestBody Universite b){return universiteService.ajouterUniversite(b);}
     @DeleteMapping("university/{id}")
+    @Operation(description = "delete university")
     public Universite retrieveUniversity(@PathVariable long id){
 
        return universiteService.getUniversite(id);}
 
     @PutMapping("updateuniversity/{id}")
+    @Operation(description = "update university")
     public Universite updateUniversite(@RequestBody Universite b)
     {
         return universiteService.updateUniversite(b);
