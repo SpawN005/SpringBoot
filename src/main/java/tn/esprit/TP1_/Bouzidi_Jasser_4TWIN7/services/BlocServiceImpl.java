@@ -48,7 +48,7 @@ blocRepositry.deleteById(idBloc);
     @Override
     @Transactional
     public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) {
-        Set<Chambre> sc = chambreRepositry.findAllByNumeroChambre(numChambre);
+        Set<Chambre> sc = chambreRepositry.findAllByNumeroChambreIn(numChambre);
         Bloc b = blocRepositry.findByNomBloc(nomBloc);
         if(sc!=null && b!=null){
             b.setChambres(sc);

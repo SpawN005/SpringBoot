@@ -62,7 +62,7 @@ public class ChambreServiceImpl implements IChambreService {
         List<Chambre> chambres = null;
         for (Bloc b : blocs) {
 
-            chambres.addAll(chambreRepositry.findByTypeChambreAndBlocAndReservations(type,b,null));
+            chambres.addAll(chambreRepositry.findByTypeChambreAndBlocAndReservation(type,b,null));
         }
         return chambres;
 

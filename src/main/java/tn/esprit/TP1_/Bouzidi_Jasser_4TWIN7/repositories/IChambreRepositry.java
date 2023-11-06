@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface IChambreRepositry extends JpaRepository<Chambre,Long> {
-    Set<Chambre> findAllByNumeroChambre(List<Long> numChambre);
+    Set<Chambre> findAllByNumeroChambreIn(List<Long> numChambre);
     Chambre findByNumeroChambre(Long numChambre);
-    List<Chambre> findByTypeChambreAndBlocAndReservations(TypeChambre t, Bloc b , Reservation r);
+    List<Chambre> findByTypeChambreAndBlocAndReservation(TypeChambre t, Bloc b , Reservation r);
 }
