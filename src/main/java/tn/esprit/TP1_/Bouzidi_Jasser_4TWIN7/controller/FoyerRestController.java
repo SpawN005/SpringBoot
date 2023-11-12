@@ -40,4 +40,7 @@ public class FoyerRestController {
     {
         return foyerService.updateFoyer(b);
     }
+    @PostMapping("addfoyerEtAffecterUniv/{id}")
+    @Operation(description = "add foyer et affecter univ")
+    public Foyer addFoyerEtAffecterUniv(@RequestBody Foyer b ,@PathVariable long id){return foyerService.ajouterFoyerEtAffecterAUniversite(b,id);}
 }

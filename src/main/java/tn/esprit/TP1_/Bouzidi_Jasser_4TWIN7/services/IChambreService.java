@@ -13,6 +13,6 @@ public interface IChambreService {
     Chambre getChambre(long idChambre);
     List<Chambre> getListChambre();
      List<Chambre>getChambresParNomBloc( String nomBloc) ;
-     long nbChambreParTypeEtBloc(TypeChambre type, long idBloc) ;
-     List<Chambre> getChambresNonReserveParNomFoyerEtTypeChambre( String nomFoyer,TypeChambre type) ;
+
+     List<Chambre> getChambresParBlocEtType(long idBloc, TypeChambre typeC) ;
 }

@@ -1,5 +1,6 @@
 package tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.services;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -47,25 +48,26 @@ blocRepositry.deleteById(idBloc);
 
     @Override
     @Transactional
-    public Bloc affecterChambresABloc(List<Long> numChambre, String nomBloc) {
+    public Bloc affecterChambresABloc(List<Long> numChambre, Long idBloc) {
         Set<Chambre> sc = chambreRepositry.findAllByNumeroChambreIn(numChambre);
-        Bloc b = blocRepositry.findByNomBloc(nomBloc);
+        Bloc b = blocRepositry.findById(idBloc).orElse(null);
         if(sc!=null && b!=null){
-            b.setChambres(sc);
-            return b;
+          sc.stream().forEach(e-> e.setBloc(b));
         }
         return null;
     }
 
     @Override
     @Transactional
-    public Bloc affecterBlocAFoyer(String nomBloc, String nomFoyer) {
-        Bloc b = blocRepositry.findByNomBloc(nomBloc);
-        Foyer f= foyerRepositry.findByNomFoyer(nomFoyer);
+    public Bloc affecterBlocAFoyer(long idBloc, long idFoyer) {
+        Bloc b = blocRepositry.findById(idBloc).orElse(null);
+        Foyer f= foyerRepositry.findById(idFoyer).orElse(null);
         if(f!=null && b!=null){
             b.setFoyer(f);
             return b;
         }
         return null;
     }
+
+
 }

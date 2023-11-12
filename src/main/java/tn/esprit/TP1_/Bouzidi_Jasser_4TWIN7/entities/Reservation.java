@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -17,9 +19,11 @@ public class Reservation implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idReservation")
     private Long idReservation;
-    private Date anneeUniversitaire;
+    private String numReservation;
+    private LocalDate debutAnneeUniv;
+    private LocalDate finAnneeUniv;
     private boolean estValide;
-    @ManyToMany
-    private Set<Etudiant> etudiants;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Etudiant> etudiants = new HashSet<>();
 
 }

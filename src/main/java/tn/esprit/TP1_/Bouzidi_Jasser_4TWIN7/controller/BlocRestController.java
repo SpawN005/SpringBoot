@@ -31,6 +31,12 @@ public class BlocRestController {
     public void removeBloc(@PathVariable long id){
 
         blocService.deleteBloc(id);}
+    @PostMapping("addchambrestobloc/{id}")
+    @Operation(description = "add chambres to bloc")
+    public Bloc addChambresToBloc(@PathVariable long id,@RequestBody List<Long> c){return blocService.affecterChambresABloc(c,id);}
+    @PostMapping("affecterBlocAFoyer/{id}")
+    @Operation(description = "affecter Bloc A Foyer")
+    public Bloc affecterBlocAFoyer(@PathVariable long id,@RequestBody long f){return blocService.affecterBlocAFoyer(id,f);}
 
     @PutMapping("updatebloc/{id}")
     @Operation(description = "update bloc")

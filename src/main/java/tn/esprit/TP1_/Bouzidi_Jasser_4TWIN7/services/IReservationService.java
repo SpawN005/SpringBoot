@@ -3,6 +3,7 @@ package tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.services;
 import tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities.Reservation;
 import tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities.Universite;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -14,5 +15,7 @@ public interface IReservationService {
     List<Reservation> getListReservation();
     Reservation ajouterReservationEtAssignerAChambreEtAEtudiant (Reservation res, Long
             numChambre, long cin) ;
-     long getReservationParAnneeUniversitaire(Date debutAnnee, Date finAnnee ) ;
+
+     Reservation ajouterReservation (long idChambre, long cinEtudiant) ;
+     Reservation annulerReservation (long cinEtudiant,String numReservation) ;
 }

@@ -1,11 +1,13 @@
 package tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,11 +22,12 @@ public class Chambre implements Serializable {
     private Long numeroChambre;
     @Enumerated(EnumType.STRING)
     private TypeChambre typeChambre;
-    @ManyToOne
-    Bloc bloc;
 
-    @OneToMany
-    private Set<Reservation> reservation;
+    @ManyToOne(fetch = FetchType.EAGER)
+    Bloc bloc;
+@JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Reservation> reservation = new HashSet<>();
 
 
 }

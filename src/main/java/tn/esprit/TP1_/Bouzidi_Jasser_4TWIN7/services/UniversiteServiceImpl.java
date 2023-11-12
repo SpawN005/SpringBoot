@@ -13,8 +13,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UniversiteServiceImpl implements IUniversiteService{
-    IUniversiteRepositry universiteRepositry;
-    IFoyerRepositry foyerRepositry;
+   final IUniversiteRepositry universiteRepositry;
+    final  IFoyerRepositry foyerRepositry;
     @Override
     public Universite ajouterUniversite(Universite U) {
         return universiteRepositry.save(U);
@@ -47,6 +47,7 @@ public class UniversiteServiceImpl implements IUniversiteService{
     public Universite affecterFoyerAUniversite(long idFoyer, String nomUniversite) {
         Foyer f = foyerRepositry.findById(idFoyer).orElse(null);
         Universite u = universiteRepositry.findByNomUniversite(nomUniversite);
+        System.out.println(u);
         if(f!=null && u!=null){
             u.setFoyer(f);
             return u;
@@ -57,10 +58,10 @@ public class UniversiteServiceImpl implements IUniversiteService{
 
     @Override
     @Transactional
-    public Universite desaffecterFoyerAUniversite(long idFoyer, long idUniversite) {
-        Foyer f = foyerRepositry.findById(idFoyer).orElse(null);
+    public Universite desaffecterFoyerAUniversite(long idUniversite) {
+
         Universite u = universiteRepositry.findById(idUniversite).orElse(null);
-        if(f!=null && u!=null){
+        if(u!=null){
             u.setFoyer(null);
             return u;
 

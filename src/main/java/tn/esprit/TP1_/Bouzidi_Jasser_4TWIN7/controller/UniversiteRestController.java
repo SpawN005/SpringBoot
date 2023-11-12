@@ -28,6 +28,13 @@ public class UniversiteRestController {
     public Universite retrieveUniversity(@PathVariable long id){
 
        return universiteService.getUniversite(id);}
+    @PutMapping("affecterFoyeraUniver/{f}")
+    @Operation(description = "add university")
+    public Universite affecterFoyeraUniver(@PathVariable long f,@RequestBody String nomUniv){return universiteService.affecterFoyerAUniversite(f,nomUniv);}
+
+    @PutMapping("desafecter/{f}")
+    @Operation(description = "add university")
+    public Universite desaffecterFoyer(@PathVariable long f){return universiteService.desaffecterFoyerAUniversite(f);}
 
     @PutMapping("updateuniversity/{id}")
     @Operation(description = "update university")

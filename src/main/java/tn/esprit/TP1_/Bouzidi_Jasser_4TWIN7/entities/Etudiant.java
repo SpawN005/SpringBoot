@@ -1,10 +1,12 @@
 package tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -21,8 +23,8 @@ public class Etudiant implements Serializable {
     private String prenomEt;
     private Long cin;
     private String ecole;
-    private Date dateNaissance;
-
+    private LocalDate dateNaissance;
+@JsonIgnore
     @ManyToMany(mappedBy = "etudiants")
     private Set<Reservation> reservations;
 

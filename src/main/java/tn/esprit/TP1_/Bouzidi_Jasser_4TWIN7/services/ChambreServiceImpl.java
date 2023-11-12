@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class ChambreServiceImpl implements IChambreService {
-    IChambreRepositry chambreRepositry;
-    IBlocRepositry blocRepositry;
-    IFoyerRepositry foyerRepositry;
+    final IChambreRepositry chambreRepositry;
+    final IBlocRepositry blocRepositry;
+    final IFoyerRepositry foyerRepositry;
     @Override
     public Chambre ajouterChambre(Chambre c) {
         return chambreRepositry.save(c);
@@ -50,21 +50,11 @@ public class ChambreServiceImpl implements IChambreService {
     }
 
     @Override
-    public long nbChambreParTypeEtBloc(TypeChambre type, long idBloc) {
-        return blocRepositry.findById(idBloc).orElse(null).getChambres().stream().filter(e -> e.getTypeChambre().equals(type)).count();
+    public List<Chambre> getChambresParBlocEtType(long idBloc, TypeChambre typeC) {
+        System.out.println(typeC);
+        return blocRepositry.findById(idBloc).orElse(null).getChambres().stream().filter(e -> e.getTypeChambre().equals(typeC)).toList();
 
     }
 
-    @Override
-    public List<Chambre> getChambresNonReserveParNomFoyerEtTypeChambre(String nomFoyer, TypeChambre type) {
-        Foyer foyer = foyerRepositry.findByNomFoyer(nomFoyer);
-        List<Bloc> blocs = blocRepositry.findByFoyer(foyer);
-        List<Chambre> chambres = null;
-        for (Bloc b : blocs) {
 
-            chambres.addAll(chambreRepositry.findByTypeChambreAndBlocAndReservation(type,b,null));
-        }
-        return chambres;
-
-    }
 }

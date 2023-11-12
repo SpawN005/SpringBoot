@@ -12,5 +12,5 @@ public interface IUniversiteService {
 
     List<Universite> getListUniversite();
     Universite affecterFoyerAUniversite (long idFoyer, String nomUniversite) ;
-    Universite desaffecterFoyerAUniversite (long idFoyer, long idUniversite) ;
+    Universite desaffecterFoyerAUniversite ( long idUniversite) ;
 }

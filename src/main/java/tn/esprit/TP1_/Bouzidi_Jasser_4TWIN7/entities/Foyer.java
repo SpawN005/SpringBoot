@@ -1,5 +1,6 @@
 package tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,11 +17,14 @@ public class Foyer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idFoyer")
+
     private Long idFoyer;
     private String nomFoyer;
-    @OneToOne
+    @JsonIgnore
+    @OneToOne(mappedBy = "foyer")
     private Universite universite;
     private Long capaciteFoyer;
-    @OneToMany(mappedBy = "foyer",cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+
+    @OneToMany(mappedBy = "foyer",cascade = {CascadeType.PERSIST,CascadeType.REMOVE},fetch = FetchType.EAGER)
     private Set<Bloc> blocs;
 }

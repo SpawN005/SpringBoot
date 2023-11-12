@@ -14,5 +14,6 @@ import java.util.Set;
 public interface IChambreRepositry extends JpaRepository<Chambre,Long> {
     Set<Chambre> findAllByNumeroChambreIn(List<Long> numChambre);
     Chambre findByNumeroChambre(Long numChambre);
+    Chambre findByReservation(Reservation r);
     List<Chambre> findByTypeChambreAndBlocAndReservation(TypeChambre t, Bloc b , Reservation r);
 }

@@ -1,5 +1,6 @@
 package tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,8 +16,10 @@ public class Universite implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idUniversite")
     private Long idUniversite;
-    @OneToOne(mappedBy = "universite")
+    @JsonIgnore
+    @OneToOne
     private Foyer foyer;
+    @Column(unique = true )
     private String nomUniversite;
 
     private String adresse;

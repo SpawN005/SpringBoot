@@ -10,7 +10,7 @@ import tn.esprit.TP1_.Bouzidi_Jasser_4TWIN7.entities.Etudiant;
 public class Tp1BouzidiJasser4Twin7Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Tp1BouzidiJasser4Twin7Application.class, args);
+		SpringApplication.	run(Tp1BouzidiJasser4Twin7Application.class, args);
 	}
 
 }
